@@ -1,13 +1,14 @@
 /**
- * properties-sa.com - Corporate Engine
+ * SODIC Developments Portfolio Landing Page
+ * Operated by properties-sa.com — Strategic Marketing Partner
  * Strict Calm Luxury Architecture (Zero Gold Policy)
- * Independent Real Estate Consultancy & Authorized Marketing Intermediary
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initCountryCodes();
   initLeadForm();
   initSmoothScroll();
+  initModalListeners();
 });
 
 // Supported international country dialing codes with properly encoded UTF-8 flags
@@ -32,7 +33,7 @@ const countryCodes = [
 // Configuration
 const CONFIG = {
   whatsappNumber: '201033373331',
-  defaultInquiryMessage: 'Hello properties-sa.com, I would like to schedule an independent real estate consultation regarding premier Egyptian investment opportunities.'
+  defaultInquiryMessage: 'Hello properties-sa.com, I would like to inquire about the SODIC Developments portfolio.'
 };
 
 /**
@@ -103,13 +104,13 @@ function initLeadForm() {
         name: fullName,
         phone: `${countryCode} ${phoneNumber}`,
         timestamp: new Date().toISOString(),
-        source: 'properties-sa.com'
+        source: 'properties-sa.com — SODIC Portfolio'
       };
 
       try {
-        const stored = JSON.parse(localStorage.getItem('properties_sa_leads') || '[]');
+        const stored = JSON.parse(localStorage.getItem('properties_sa_sodic_leads') || '[]');
         stored.push(lead);
-        localStorage.setItem('properties_sa_leads', JSON.stringify(stored));
+        localStorage.setItem('properties_sa_sodic_leads', JSON.stringify(stored));
       } catch (err) {
         console.warn('LocalStorage error:', err);
       }
@@ -119,18 +120,8 @@ function initLeadForm() {
       form.reset();
       initCountryCodes();
 
-      // Trigger Google Analytics conversion if available
-      if (typeof gtag_report_conversion === 'function') {
-        gtag_report_conversion();
-      } else if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', {
-          event_category: 'Consultation',
-          event_label: 'Lead Form'
-        });
-      }
-
       openSuccessModal(lead.name, lead.phone);
-    }, 750);
+    }, 600);
   });
 }
 
@@ -145,49 +136,76 @@ function openSuccessModal(name, fullPhone) {
   if (modalName) modalName.textContent = name;
 
   if (whatsappBtn) {
-    const text = encodeURIComponent(`Hello properties-sa.com, my name is ${name} (${fullPhone}). I just registered my interest on properties-sa.com and would like to receive curated portfolios and an independent consultation.`);
+    const text = encodeURIComponent(`Hello properties-sa.com, my name is ${name} (${fullPhone}). I just registered my interest on properties-sa.com and would like to receive floor plans, updated availability, and payment breakdowns for SODIC Developments.`);
     whatsappBtn.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${text}`;
   }
 
   if (modal) {
     modal.classList.remove('hidden');
+    modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
   }
 }
 
-function closeSuccessModal() {
+/**
+ * Close modal
+ */
+function closeModal() {
   const modal = document.getElementById('successModal');
   if (modal) {
     modal.classList.add('hidden');
+    modal.classList.remove('flex');
     document.body.style.overflow = '';
   }
 }
 
-// Attach to window for inline onclick handlers
-window.closeSuccessModal = closeSuccessModal;
+function initModalListeners() {
+  const closeBtn = document.getElementById('closeModalBtn');
+  const modal = document.getElementById('successModal');
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+}
 
 /**
- * Minimalist notification banner
+ * Notice banner
  */
 function showNotice(message, type = 'info') {
-  const existing = document.getElementById('saNotice');
-  if (existing) existing.remove();
+  let notice = document.getElementById('formNotice');
+  if (!notice) {
+    notice = document.createElement('div');
+    notice.id = 'formNotice';
+    notice.className = 'mt-3 p-3 text-xs font-semibold rounded-lg text-center transition-all duration-300';
+    const form = document.getElementById('leadCaptureForm');
+    if (form) form.appendChild(notice);
+  }
 
-  const notice = document.createElement('div');
-  notice.id = 'saNotice';
-  notice.className = `fixed top-6 right-6 z-50 px-5 py-3.5 rounded-xl text-sm font-medium transition-all duration-300 transform translate-y-0 shadow-2xl ${
-    type === 'error'
-      ? 'bg-slate-900 text-white border border-slate-700'
-      : 'bg-white text-slate-800 border border-slate-200'
-  }`;
+  if (type === 'error') {
+    notice.className = 'mt-3 p-3 text-xs font-semibold rounded-lg text-center bg-rose-50 text-rose-700 border border-rose-200';
+  } else {
+    notice.className = 'mt-3 p-3 text-xs font-semibold rounded-lg text-center bg-slate-100 text-slate-800 border border-slate-300';
+  }
+
   notice.textContent = message;
-
-  document.body.appendChild(notice);
+  notice.classList.remove('hidden');
 
   setTimeout(() => {
-    notice.style.opacity = '0';
-    notice.style.transform = 'translateY(-10px)';
-    setTimeout(() => notice.remove(), 300);
+    if (notice) notice.classList.add('hidden');
   }, 4000);
 }
 
@@ -199,10 +217,10 @@ function initSmoothScroll() {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       if (targetId === '#' || targetId === '') return;
-      const target = document.querySelector(targetId);
-      if (target) {
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
         e.preventDefault();
-        target.scrollIntoView({
+        targetEl.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         });
