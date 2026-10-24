@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   CALM LUXURY DESIGN SYSTEM - PROPERTIES-SA.COM
+   STRICT ZERO GOLD POLICY ENFORCED
+   Palette:
+     - Pure White: #FFFFFF
+     - Clean Alabaster: #FAFAFB / #F8F9FA
+     - Subtle Stone Grey: #F8F9FA / #F1F3F5
+     - Cool Border: #E2E8F0
+     - Deep Rich Charcoal / Slate: #1A202C / #2D3748 / #0F172A
+     - WhatsApp Green: #25D366 (Hover: #20BD5A)
+   ========================================================================== */
+
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-tertiary: #F1F3F5;
+  --bg-alabaster: #FAFAFB;
+  
+  --text-primary: #1A202C;
+  --text-secondary: #2D3748;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+
+  --border-cool: #E2E8F0;
+  --border-subtle: #EDF2F7;
+  
+  --card-glass: rgba(255, 255, 255, 0.92);
+  --card-glass-hover: rgba(255, 255, 255, 0.98);
+  
+  --whatsapp-green: #25D366;
+  --whatsapp-hover: #20BD5A;
+
+  --charcoal-button: #1A202C;
+  --charcoal-hover: #2D3748;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-cinzel: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1, h2, h3, h4, .font-editorial {
+  font-family: var(--font-serif);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.font-cinzel {
+  font-family: var(--font-cinzel);
+}
+
+/* Frosted Glass Container */
+.frosted-glass {
+  background: var(--card-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-cool);
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(226, 232, 240, 0.6);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.frosted-glass:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.09);
+}
+
+/* WhatsApp Button */
+.btn-whatsapp {
+  background-color: var(--whatsapp-green);
+  color: #FFFFFF;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.35);
+  text-decoration: none;
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--whatsapp-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(37, 211, 102, 0.45);
+  color: #FFFFFF;
+}
+
+.btn-whatsapp:active {
+  transform: translateY(0);
+}
+
+/* Charcoal Primary Button */
+.btn-charcoal {
+  background-color: var(--charcoal-button);
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--charcoal-button);
+  box-shadow: 0 10px 20px -5px rgba(26, 32, 44, 0.25);
+  cursor: pointer;
+}
+
+.btn-charcoal:hover {
+  background-color: var(--charcoal-hover);
+  border-color: var(--charcoal-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -5px rgba(26, 32, 44, 0.35);
+}
+
+.btn-charcoal:active {
+  transform: translateY(0);
+}
+
+/* Outline Cool Button */
+.btn-cool-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-cool);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-cool-outline:hover {
+  background-color: var(--bg-tertiary);
+  border-color: #CBD5E1;
+}
+
+/* Minimalist Form Controls */
+.form-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-cool);
+  border-radius: 0.625rem;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 3px rgba(26, 32, 44, 0.08);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 0.375rem;
+}
+
+/* Subtle Architectural Grid Pattern */
+.bg-architectural-grid {
+  background-color: var(--bg-primary);
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F3F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Floating WhatsApp Pulse */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.pulse-whatsapp {
+  animation: pulse-ring 2.6s infinite;
+}
+
+/* Country code dropdown custom arrow */
+.country-select-wrapper select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
