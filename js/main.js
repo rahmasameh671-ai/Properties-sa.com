@@ -33,7 +33,8 @@ const countryCodes = [
 // Configuration
 const CONFIG = {
   whatsappNumber: '201033373331',
-  defaultInquiryMessage: 'Hello properties-sa.com, I would like to inquire about the SODIC Developments portfolio.'
+  defaultInquiryMessage: 'Hello properties-sa.com, I would like to inquire about the SODIC Developments portfolio.',
+  zapierWebhookUrl: 'https://hooks.zapier.com/hooks/catch/25429357/uclzmpn/'
 };
 
 /**
@@ -56,13 +57,13 @@ function initCountryCodes() {
 }
 
 /**
- * Lead capture form handling
+ * Lead capture form handling (Zapier Webhook Integration)
  */
 function initLeadForm() {
   const form = document.getElementById('leadCaptureForm');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const nameInput = document.getElementById('fullName');
@@ -87,6 +88,9 @@ function initLeadForm() {
       return;
     }
 
+    // Format full phone number with country dial code
+    const fullPhoneNumber = countryCode ? `${countryCode} ${phoneNumber}`.trim() : phoneNumber;
+
     // Button loading state
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
@@ -95,33 +99,51 @@ function initLeadForm() {
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
       </svg>
-      PROCESSING...
+      SUBMITTING...
     `;
 
-    setTimeout(() => {
-      // Store lead data locally
-      const lead = {
-        name: fullName,
-        phone: `${countryCode} ${phoneNumber}`,
-        timestamp: new Date().toISOString(),
-        source: 'properties-sa.com — SODIC Portfolio'
-      };
+    // Grabbing form data PLUS background data
+    const data = {
+      fullName: fullName,
+      phoneNumber: fullPhoneNumber,
+      landingPageUrl: window.location.href,       // Captures the full page URL
+      submissionDate: new Date().toISOString()    // Captures the exact date and time
+    };
 
+    try {
+      // POST to Zapier Webhook
+      await fetch(CONFIG.zapierWebhookUrl, {
+        method: "POST",
+        body: JSON.stringify(data)
+      });
+
+      // Local storage backup
       try {
         const stored = JSON.parse(localStorage.getItem('properties_sa_sodic_leads') || '[]');
-        stored.push(lead);
+        stored.push({
+          ...data,
+          source: 'properties-sa.com — SODIC Portfolio'
+        });
         localStorage.setItem('properties_sa_sodic_leads', JSON.stringify(stored));
       } catch (err) {
         console.warn('LocalStorage error:', err);
       }
 
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
       form.reset();
       initCountryCodes();
 
-      openSuccessModal(lead.name, lead.phone);
-    }, 600);
+      // Show inline thank you notice
+      showNotice('Thank You! Your details have been received. We will be in touch shortly.', 'success');
+
+      // Open luxury confirmation modal with instant WhatsApp action
+      openSuccessModal(data.fullName, data.phoneNumber);
+    } catch (error) {
+      console.error("Error submitting to Zapier:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
   });
 }
 
@@ -197,6 +219,8 @@ function showNotice(message, type = 'info') {
 
   if (type === 'error') {
     notice.className = 'mt-3 p-3 text-xs font-semibold rounded-lg text-center bg-rose-50 text-rose-700 border border-rose-200';
+  } else if (type === 'success') {
+    notice.className = 'mt-3 p-4 text-xs font-semibold rounded-lg text-center bg-emerald-50 text-emerald-800 border border-emerald-200';
   } else {
     notice.className = 'mt-3 p-3 text-xs font-semibold rounded-lg text-center bg-slate-100 text-slate-800 border border-slate-300';
   }
