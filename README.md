@@ -1,63 +1,110 @@
-# properties-sa.com — Corporate Real Estate Homepage
+# properties-sa.com — SODIC Developments Portfolio Landing Page
 
-> **Independent Real Estate Consultancy & Authorized Marketing Intermediary**  
-> Nationwide coverage across Egypt’s premier residential and commercial destinations.
+> **Strategic Marketing Partner &bull; Independent Real Estate Consultancy**  
+> Showcasing the premier development portfolio of SODIC Developments across Egypt.
 
 ---
 
 ## 🏛️ Project Overview
 
-**properties-sa.com** is a high-end corporate landing page designed under a strict **Calm Luxury** aesthetic and **Strict Zero Gold Policy**. The platform positions properties-sa.com as an independent strategic advisory and authorized marketing intermediary connecting discerning clients and investors with Egypt's most prominent real estate developers.
+**properties-sa.com** presents a modern, mobile-responsive real estate showcase dedicated to **SODIC Developments**, crafted under a strict **Calm Luxury** aesthetic and an uncompromising **Zero Gold Policy**. The platform positions properties-sa.com as an independent strategic marketing partner and real estate consultancy connecting discerning clients with SODIC's landmark developments.
 
-### Premier Investment Corridors Covered:
-- **New Cairo & Mostakbal City**: Integrated communities, business districts, and private gated living.
-- **North Coast & Ras El Hekma**: Mediterranean coastal retreats, beachfront villas, and luxury chalets.
-- **West Cairo (Sheikh Zayed & 6th of October)**: Established upscale neighborhoods, golf communities, and prime residential developments.
-- **Red Sea & Coastal Havens**: Year-round sunshine, resort living, and high-yield holiday homes.
+### Dedicated Routes Available:
+- **Root URL**: `/` (`index.html`)
+- **SODIC Portfolio Dedicated Route**: `/sodic` (`sodic/index.html` & `sodic.html`)
+
+### Featured Flagship Projects:
+1. **Ogami by SODIC (Ras El Hekma &bull; KM 204 Alex-Matrouh Road)**
+   - 440-Acre Premier Coastal Destination with 800-Meter Pristine Beachfront.
+   - Maldives-Inspired Living blending Contemporary Japanese Architecture & Crystal Lagoons.
+   - Starting from 18.8M EGP &bull; Installments Up to 7 Years &bull; Fully Finished.
+   - Direct WhatsApp CTA: `https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20Ogami%20by%20SODIC`
+
+2. **East Vale (Mostakbal City Master Community)**
+   - SODIC's Flagship Destination in Mostakbal City.
+   - Seamless Fusion of Expansive Greenery & Modern Architecture.
+   - Apartments from 10.5M EGP &bull; Villas from 33M EGP &bull; 5% Down Payment | Up to 9 Years &bull; Fully Finished with ACs Installed.
+   - Direct WhatsApp CTA: `https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20East%20Vale%20Mostakbal%20City`
+
+3. **SODIC East (New Cairo Integrated Destination)**
+   - Expansive 650-Acre Master Community in East Cairo.
+   - World-Class Sports Club, Vast Green Open Spaces & Advanced Social Infrastructure.
+   - Apartments from 13.5M EGP &bull; Villas from 28M EGP &bull; 1.5% Down Payment | Up to 10 Years &bull; Modern Apartments & Standalone Villas.
+   - Direct WhatsApp CTA: `https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20SODIC%20East`
 
 ---
 
-## 🎨 Architectural & Design Highlights
+## 🎨 Architectural & Design Guidelines (Strict Zero Gold)
 
-- **Strict Zero Gold Policy**: Absolutely no gold, bronze, brass, or yellow tones across the layout.
+- **Zero Gold Policy**: Absolutely NO gold, bronze, brass, or yellow tones anywhere across the layout.
 - **Calm Luxury Palette**:
-  - Backgrounds: Pure White (`#FFFFFF`), Alabaster (`#FAFAFB`), and Subtle Stone Grey (`#F8F9FA` / `#F1F3F5`).
-  - Typography & Accents: Deep Rich Charcoal & Slate (`#1A202C` / `#2D3748`).
-  - Containers: Frosted Glass (`rgba(255, 255, 255, 0.92)` with `backdrop-filter: blur(18px)`).
-  - Triggers & Actions: Solid Vibrant WhatsApp Green (`#25D366` / Hover: `#20BD5A`).
-- **No Top Fixed Navbar**: The Hero section begins directly at `top: 0` for immediate impact.
-- **Mobile-First Layout**: 100% responsive, centered cards, 2-column mobile grid on destinations, zero horizontal overflow.
-- **Compliant Form UI**: Clean inputs with NO placeholder text, split phone number layout with UTF-8 country code flag dropdown defaulting to Egypt (`+20`).
-- **Compliance & Legal Standalone Routes**:
-  - Privacy Policy (`/privacy-policy` & `privacy-policy.html`)
-  - Terms & Conditions (`/terms-conditions` & `terms-conditions.html`)
-  - Styled with 100% white typography on solid black background (`#000000`).
-  - Governed under the laws of the Arab Republic of Egypt (Courts of Cairo).
+  - Dominant: Crisp Pure White (`#FFFFFF`), Clean Alabaster (`#FAFAFB`), and Soft Subtle Stone/Platinum Grey (`#F8F9FA` / `#F1F3F5`).
+  - Accents: Deep Rich Charcoal & Slate (`#1A202C` / `#2D3748`) for razor-sharp typography.
+  - Cards & Containers: Translucent Frosted White Cards (`rgba(255, 255, 255, 0.90)`) with subtle 1px cool borders (`#E2E8F0`).
+  - CTAs & Triggers: Solid Direct WhatsApp Green (`#25D366` / Hover: `#20BD5A`).
+- **No Top Fixed Navbar**: The Hero section begins directly at `top: 0` for immediate architectural immersion.
+- **100% Mobile-First Responsiveness**: Single-column collapsed layout on mobile with thumb-friendly controls and zero horizontal overflow.
+- **NO 'Visual Gallery' Buttons**: Kept strictly to direct green WhatsApp action buttons.
+- **Lead Capture Form**:
+  - Clean UI: Blank inputs with NO placeholder examples (no sample names or numbers).
+  - Split phone input: Country code dropdown on left with proper UTF-8 flags (defaulting to Egypt `+20 🇪🇬`), clean blank number field on right.
+  - Solid charcoal button reading `SUBMIT`.
+  - Legal disclaimer and centered clickable links to Privacy Policy and Terms & Conditions.
+
+---
+
+## ⚖️ Legal & Standalone Routed Pages (Solid Black Background)
+
+- **Privacy Policy** (`/privacy-policy` & `privacy-policy.html`)
+  - Effective Date: January 1, 2026
+  - Entity: `properties-sa.com`
+  - Address: New Cairo S5-3, Second District, Fifth Settlement, First Floor.
+  - Phone: `01005080951`
+  - Explicit data collection, non-sale of data, and purpose-bound sharing only with authorized developer partners.
+- **Terms & Conditions** (`/terms-conditions` & `terms-conditions.html`)
+  - Last updated: January 1, 2026
+  - Operational positioning as independent real estate consultancy & strategic marketing partner.
+  - Illustrative nature of renders and developer pricing autonomy.
+  - Governed by the laws of the Arab Republic of Egypt (Courts of Cairo).
 
 ---
 
 ## 📞 WhatsApp Integration
 
-- **Advisory Line**: `+201033373331`
-- **Floating Icon**: Fixed bottom-right round green button linking to direct advisory.
-- **Action Buttons**: WhatsApp Green buttons reading `CONTACT US` and `Speak to a Consultant`.
+- **Official Number**: `+201033373331`
+- **Floating Button**: Fixed round green icon (`#25D366`) linking directly to `https://wa.me/201033373331`.
+- **Project CTAs**: Solid green buttons reading `CONTACT US` with prefilled inquiry messages.
+- **Partnership CTA**: Solid green button reading `Speak to a Consultant`.
 
 ---
 
 ## 📁 Repository Structure
 
 ```
-├── index.html                   # Main corporate homepage
-├── privacy-policy.html          # Standalone legal privacy policy
+├── index.html                   # Main SODIC portfolio landing page
+├── sodic.html                   # Standalone routed page for /sodic
+├── sodic/
+│   └── index.html               # Clean routed SODIC portfolio page (/sodic)
+├── privacy-policy.html          # Standalone legal privacy policy (black theme)
 ├── privacy-policy/
-│   └── index.html               # Clean routed privacy policy (/privacy-policy)
-├── terms-conditions.html        # Standalone legal terms & conditions
+│   └── index.html               # Routed URL privacy policy (/privacy-policy)
+├── terms-conditions.html        # Standalone legal terms & conditions (black theme)
 ├── terms-conditions/
-│   └── index.html               # Clean routed terms & conditions (/terms-conditions)
+│   └── index.html               # Routed URL terms & conditions (/terms-conditions)
+├── images/
+│   ├── sodic-logo.png           # Official SODIC developer logo
+│   ├── sodic-east-logo.png      # SODIC East project logo
+│   ├── ogami-logo.png           # Ogami by SODIC project logo
+│   ├── east-vale-logo.png       # East Vale project logo
+│   ├── hero-bg.jpg              # High-key calm luxury architecture hero visual
+│   ├── ogami.jpg                # Ogami Ras El Hekma coastal render
+│   ├── east-vale.jpg            # East Vale Mostakbal City render
+│   └── sodic-east.jpg           # SODIC East New Cairo render
 ├── css/
 │   └── style.css                # Calm Luxury stylesheet (Strict Zero Gold)
 ├── js/
 │   └── main.js                  # Lead engine, country selector, modal & conversion
+├── server.ps1                   # Local HTTP server with routing support
 ├── .gitignore
 └── README.md
 ```
