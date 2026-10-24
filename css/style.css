@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 /* ==========================================================================
-   CALM LUXURY DESIGN SYSTEM - PROPERTIES-SA.COM
+   CALM LUXURY DESIGN SYSTEM - SODIC PORTFOLIO BY PROPERTIES-SA.COM
    STRICT ZERO GOLD POLICY ENFORCED
    Palette:
      - Pure White: #FFFFFF
      - Clean Alabaster: #FAFAFB / #F8F9FA
-     - Subtle Stone Grey: #F8F9FA / #F1F3F5
+     - Soft Subtle Stone/Platinum Grey: #F8F9FA / #F1F3F5
      - Cool Border: #E2E8F0
      - Deep Rich Charcoal / Slate: #1A202C / #2D3748 / #0F172A
-     - WhatsApp Green: #25D366 (Hover: #20BD5A)
+     - Direct WhatsApp Green: #25D366 (Hover: #20BD5A)
    ========================================================================== */
 
 :root {
@@ -26,8 +26,8 @@
   --border-cool: #E2E8F0;
   --border-subtle: #EDF2F7;
   
-  --card-glass: rgba(255, 255, 255, 0.92);
-  --card-glass-hover: rgba(255, 255, 255, 0.98);
+  --card-glass: rgba(255, 255, 255, 0.90);
+  --card-glass-hover: rgba(255, 255, 255, 0.96);
   
   --whatsapp-green: #25D366;
   --whatsapp-hover: #20BD5A;
@@ -78,13 +78,13 @@ h1, h2, h3, h4, .font-editorial {
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border-cool);
-  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(226, 232, 240, 0.6);
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(226, 232, 240, 0.7);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .frosted-glass:hover {
   border-color: #CBD5E1;
-  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.09);
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
 }
 
 /* WhatsApp Button */
@@ -140,22 +140,6 @@ h1, h2, h3, h4, .font-editorial {
   transform: translateY(0);
 }
 
-/* Outline Cool Button */
-.btn-cool-outline {
-  background-color: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border-cool);
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.btn-cool-outline:hover {
-  background-color: var(--bg-tertiary);
-  border-color: #CBD5E1;
-}
-
 /* Minimalist Form Controls */
 .form-input {
   width: 100%;
@@ -189,8 +173,8 @@ h1, h2, h3, h4, .font-editorial {
 .bg-architectural-grid {
   background-color: var(--bg-primary);
   background-image: 
-    linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+    linear-gradient(to right, rgba(226, 232, 240, 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.5) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
@@ -242,4 +226,22 @@ h1, h2, h3, h4, .font-editorial {
   background-position: right 0.75rem center;
   background-size: 1rem;
   padding-right: 2rem;
+}
+
+/* East Vale Invert Logo Helper (since the original logo is white text on transparent) */
+.logo-invert-charcoal {
+  filter: brightness(0);
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+.logo-invert-charcoal:hover {
+  opacity: 1;
+}
+
+/* Mobile responsive safeguards */
+@media (max-width: 640px) {
+  .hero-headline {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
 }
