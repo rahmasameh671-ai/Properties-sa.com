@@ -24,8 +24,14 @@ export const LeadForm = () => {
         body: JSON.stringify(data),
       });
 
-      if (typeof window !== "undefined" && typeof window.gtag_report_conversion === "function") {
-        window.gtag_report_conversion();
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', {
+          event_category: 'Lead',
+          event_label: 'SODIC Interest Form',
+          value: 1.0,
+          currency: 'EGP',
+          send_to: 'AW-17103245801'
+        });
       }
 
       setIsSuccess(true);
