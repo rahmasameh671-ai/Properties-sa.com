@@ -11,26 +11,38 @@
 
 ### Dedicated Routes Available:
 - **Root URL**: `/` (`index.html`)
+- **Hyde Park Portfolio Dedicated Route**: `/hyde-park` (`hyde-park/index.html` & `hyde-park.html`)
 - **SODIC Portfolio Dedicated Route**: `/sodic` (`sodic/index.html` & `sodic.html`)
 
-### Featured Flagship Projects:
+### Featured Flagship Portfolios:
+
+#### 🏛️ Hyde Park Portfolio (`/hyde-park`)
+1. **One Hyde Park (2 Minutes From AUC &bull; New Cairo)**
+   - A quiet address arranged around reflecting water, stone, glass, and mature planting.
+   - 1 Bed: Starting from 6.4M EGP &bull; 2 Beds: Starting from 9.3M EGP &bull; 3 Beds: Starting from 11.7M EGP.
+   - Installments up to 10 years.
+   - Direct WhatsApp CTA: `https://wa.me/201033373331?text=Hello%2C%20I%20am%20inquiring%20about%20One%20Hyde%20Park%20New%20Cairo`
+
+2. **Sea Shore (Ras El Hekma Coastal Sanctuary)**
+   - Mediterranean-inspired whitewashed volumes, shaded loggias, olive and palm, and sand running to the sea.
+   - Starting from 8M EGP &bull; 5% Down Payment | 8 Years Installments.
+   - Direct WhatsApp CTA: `https://wa.me/201033373331?text=Hello%2C%20I%20am%20inquiring%20about%20Sea%20Shore%20Ras%20El%20Hekma`
+
+3. **Hyde Park Central (Private Gated Community &bull; 15-Acre Central Park)**
+   - Organised around a 15-acre central park with full-service clubhouse, pools, dining, and family lawns.
+   - Starting from 5.9M EGP &bull; 5% Down Payment | 10 Years Installments.
+   - Direct WhatsApp CTA: `https://wa.me/201033373331?text=Hello%2C%20I%20am%20inquiring%20about%20Hyde%20Park%20Central`
+
+#### 🌿 SODIC Developments Portfolio (`/sodic`)
 1. **Ogami by SODIC (Ras El Hekma &bull; KM 204 Alex-Matrouh Road)**
    - 440-Acre Premier Coastal Destination with 800-Meter Pristine Beachfront.
-   - Maldives-Inspired Living blending Contemporary Japanese Architecture & Crystal Lagoons.
    - Starting from 18.8M EGP &bull; Installments Up to 7 Years &bull; Fully Finished.
-   - Direct WhatsApp CTA: `https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20Ogami%20by%20SODIC`
-
 2. **East Vale (Mostakbal City Master Community)**
    - SODIC's Flagship Destination in Mostakbal City.
-   - Seamless Fusion of Expansive Greenery & Modern Architecture.
-   - Apartments from 10.5M EGP &bull; Villas from 33M EGP &bull; 5% Down Payment | Up to 9 Years &bull; Fully Finished with ACs Installed.
-   - Direct WhatsApp CTA: `https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20East%20Vale%20Mostakbal%20City`
-
+   - Apartments from 10.5M EGP &bull; Villas from 33M EGP &bull; 5% Down Payment | Up to 9 Years.
 3. **SODIC East (New Cairo Integrated Destination)**
    - Expansive 650-Acre Master Community in East Cairo.
-   - World-Class Sports Club, Vast Green Open Spaces & Advanced Social Infrastructure.
-   - Apartments from 13.5M EGP &bull; Villas from 28M EGP &bull; 1.5% Down Payment | Up to 10 Years &bull; Modern Apartments & Standalone Villas.
-   - Direct WhatsApp CTA: `https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20SODIC%20East`
+   - Apartments from 13.5M EGP &bull; Villas from 28M EGP &bull; 1.5% Down Payment | Up to 10 Years.
 
 ---
 
@@ -81,7 +93,10 @@
 ## 📁 Repository Structure
 
 ```
-├── index.html                   # Main SODIC portfolio landing page
+├── index.html                   # Main landing page
+├── hyde-park.html               # Standalone routed page for /hyde-park
+├── hyde-park/
+│   └── index.html               # Clean routed Hyde Park portfolio page (/hyde-park)
 ├── sodic.html                   # Standalone routed page for /sodic
 ├── sodic/
 │   └── index.html               # Clean routed SODIC portfolio page (/sodic)
@@ -92,6 +107,11 @@
 ├── terms-conditions/
 │   └── index.html               # Routed URL terms & conditions (/terms-conditions)
 ├── images/
+│   ├── hyde-park-logo.svg       # Official Hyde Park Developments logo
+│   ├── hyde-park-hero.jpg       # High-fashion editorial hero visual
+│   ├── one-hyde-park.jpg        # One Hyde Park New Cairo architectural render
+│   ├── sea-shore.jpg            # Sea Shore Ras El Hekma coastal render
+│   ├── hyde-park-central.jpg    # Hyde Park Central 15-acre park render
 │   ├── sodic-logo.png           # Official SODIC developer logo
 │   ├── sodic-east-logo.png      # SODIC East project logo
 │   ├── ogami-logo.png           # Ogami by SODIC project logo
@@ -105,6 +125,7 @@
 ├── js/
 │   └── main.js                  # Lead engine, country selector, modal & conversion
 ├── server.ps1                   # Local HTTP server with routing support
+├── push_all_to_github.ps1       # Automated GitHub API deployment script
 ├── .gitignore
 └── README.md
 ```
