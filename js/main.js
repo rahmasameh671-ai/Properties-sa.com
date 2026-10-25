@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLeadForm();
   initSmoothScroll();
   initModalListeners();
-  initWhatsAppTracking();
+  initAnalytics();
 });
 
 // Supported international country dialing codes with properly encoded UTF-8 flags
@@ -31,10 +31,27 @@ const countryCodes = [
   { code: '+90', name: 'Turkey', flag: '🇹🇷' }
 ];
 
+// Helper to determine active portfolio context
+function getPortfolioContext() {
+  const isHydePark = window.location.pathname.includes('hyde-park') || 
+                     document.querySelector('[data-portfolio="hyde-park"]') !== null ||
+                     document.title.toLowerCase().includes('hyde park');
+
+  return {
+    isHydePark: isHydePark,
+    developerName: isHydePark ? 'Hyde Park Developments' : 'SODIC Developments',
+    portfolioLabel: isHydePark ? 'Hyde Park Portfolio' : 'SODIC Developments Portfolio',
+    eventLabel: isHydePark ? 'Hyde Park Interest Form' : 'SODIC Interest Form',
+    storageKey: isHydePark ? 'properties_sa_hydepark_leads' : 'properties_sa_sodic_leads',
+    defaultInquiryMessage: isHydePark
+      ? 'Hello properties-sa.com, I am inquiring about Hyde Park projects.'
+      : 'Hello properties-sa.com, I would like to inquire about the SODIC Developments portfolio.'
+  };
+}
+
 // Configuration
 const CONFIG = {
   whatsappNumber: '201033373331',
-  defaultInquiryMessage: 'Hello properties-sa.com, I would like to inquire about the SODIC Developments portfolio.',
   zapierWebhookUrl: 'https://hooks.zapier.com/hooks/catch/25429357/uclzmpn/'
 };
 
@@ -67,6 +84,7 @@ function initLeadForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const context = getPortfolioContext();
     const nameInput = document.getElementById('fullName');
     const phoneInput = document.getElementById('phoneNumber');
     const countrySelect = document.getElementById('countryCodeSelect');
@@ -107,6 +125,7 @@ function initLeadForm() {
     const data = {
       fullName: fullName,
       phoneNumber: fullPhoneNumber,
+      portfolio: context.portfolioLabel,
       landingPageUrl: window.location.href,       // Captures the full page URL
       submissionDate: new Date().toISOString()    // Captures the exact date and time
     };
@@ -120,12 +139,12 @@ function initLeadForm() {
 
       // Local storage backup
       try {
-        const stored = JSON.parse(localStorage.getItem('properties_sa_sodic_leads') || '[]');
+        const stored = JSON.parse(localStorage.getItem(context.storageKey) || '[]');
         stored.push({
           ...data,
-          source: 'properties-sa.com — SODIC Portfolio'
+          source: `properties-sa.com — ${context.portfolioLabel}`
         });
-        localStorage.setItem('properties_sa_sodic_leads', JSON.stringify(stored));
+        localStorage.setItem(context.storageKey, JSON.stringify(stored));
       } catch (err) {
         console.warn('LocalStorage error:', err);
       }
@@ -133,16 +152,26 @@ function initLeadForm() {
       form.reset();
       initCountryCodes();
 
-      // Google Ads Conversion Tracking: Lead form submission
-      if (typeof gtag_report_conversion === 'function') {
-        gtag_report_conversion();
+      // Google Ads & Analytics Conversion Event (AW-17103245801)
+      if (typeof window.gtag === 'function') {
+        try {
+          window.gtag('event', 'generate_lead', {
+            event_category: 'Lead',
+            event_label: context.eventLabel,
+            value: 1.0,
+            currency: 'EGP',
+            send_to: 'AW-17103245801'
+          });
+        } catch (gtagErr) {
+          console.warn('Google Tag tracking error:', gtagErr);
+        }
       }
 
       // Show inline thank you notice
       showNotice('Thank You! Your details have been received. We will be in touch shortly.', 'success');
 
       // Open luxury confirmation modal with instant WhatsApp action
-      openSuccessModal(data.fullName, data.phoneNumber);
+      openSuccessModal(data.fullName, data.phoneNumber, context);
     } catch (error) {
       console.error("Error submitting to Zapier:", error);
       alert("Something went wrong. Please try again.");
@@ -156,7 +185,8 @@ function initLeadForm() {
 /**
  * Success modal with instant WhatsApp confirmation
  */
-function openSuccessModal(name, fullPhone) {
+function openSuccessModal(name, fullPhone, context = null) {
+  const ctx = context || getPortfolioContext();
   const modal = document.getElementById('successModal');
   const modalName = document.getElementById('modalLeadName');
   const whatsappBtn = document.getElementById('modalWhatsAppBtn');
@@ -164,7 +194,7 @@ function openSuccessModal(name, fullPhone) {
   if (modalName) modalName.textContent = name;
 
   if (whatsappBtn) {
-    const text = encodeURIComponent(`Hello properties-sa.com, my name is ${name} (${fullPhone}). I just registered my interest on properties-sa.com and would like to receive floor plans, updated availability, and payment breakdowns for SODIC Developments.`);
+    const text = encodeURIComponent(`Hello properties-sa.com, my name is ${name} (${fullPhone}). I just registered my interest on properties-sa.com and would like to receive floor plans, updated availability, and payment breakdowns for ${ctx.developerName}.`);
     whatsappBtn.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${text}`;
   }
 
@@ -259,17 +289,23 @@ function initSmoothScroll() {
   });
 }
 
-
 /**
- * Track Google Ads conversions on all WhatsApp clicks
+ * Google Ads & Analytics Tracking (AW-17103245801)
  */
-function initWhatsAppTracking() {
-  document.addEventListener('click', (e) => {
-    const waLink = e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"]');
-    if (waLink) {
-      if (typeof gtag_report_conversion === 'function') {
-        gtag_report_conversion();
+function initAnalytics() {
+  document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (typeof window.gtag === 'function') {
+        try {
+          window.gtag('event', 'contact', {
+            event_category: 'WhatsApp',
+            event_label: link.getAttribute('href') || 'WhatsApp Consultation',
+            send_to: 'AW-17103245801'
+          });
+        } catch (err) {
+          console.warn('Google Tag WhatsApp tracking error:', err);
+        }
       }
-    }
+    });
   });
 }
