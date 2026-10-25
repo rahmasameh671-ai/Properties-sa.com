@@ -245,3 +245,47 @@ h1, h2, h3, h4, .font-editorial {
     line-height: 1.2 !important;
   }
 }
+
+/* ==========================================================================
+   EDITORIAL HIGH-FASHION CHIC REDESIGN EXTENSIONS
+   STRICT ZERO GOLD POLICY ENFORCED
+   ========================================================================== */
+.editorial-numeral {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  line-height: 0.9;
+  font-weight: 300;
+  color: #CBD5E1;
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+.editorial-tag {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.editorial-serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.frosted-pill {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.editorial-card-shadow {
+  box-shadow: 0 30px 60px -15px rgba(26, 32, 44, 0.05), 0 1px 2px 0 rgba(226, 232, 240, 0.6);
+  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-card-shadow:hover {
+  box-shadow: 0 35px 70px -15px rgba(26, 32, 44, 0.09), 0 2px 4px 0 rgba(226, 232, 240, 0.8);
+}
