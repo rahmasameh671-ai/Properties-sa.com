@@ -10,6 +10,23 @@
 
     gtag('config', 'AW-17103245801');
   </script>
+  <!-- Event snippet for Submit lead form conversion page -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-17103245801/WYypCNzeqagdEOmju9s_',
+        'value': 1.0,
+        'currency': 'EGP',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SODIC Developments Portfolio | By properties-sa.com — Strategic Marketing Partner</title>

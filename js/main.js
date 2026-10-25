@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLeadForm();
   initSmoothScroll();
   initModalListeners();
+  initWhatsAppTracking();
 });
 
 // Supported international country dialing codes with properly encoded UTF-8 flags
@@ -132,6 +133,11 @@ function initLeadForm() {
       form.reset();
       initCountryCodes();
 
+      // Google Ads Conversion Tracking: Lead form submission
+      if (typeof gtag_report_conversion === 'function') {
+        gtag_report_conversion();
+      }
+
       // Show inline thank you notice
       showNotice('Thank You! Your details have been received. We will be in touch shortly.', 'success');
 
@@ -250,5 +256,20 @@ function initSmoothScroll() {
         });
       }
     });
+  });
+}
+
+
+/**
+ * Track Google Ads conversions on all WhatsApp clicks
+ */
+function initWhatsAppTracking() {
+  document.addEventListener('click', (e) => {
+    const waLink = e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"]');
+    if (waLink) {
+      if (typeof gtag_report_conversion === 'function') {
+        gtag_report_conversion();
+      }
+    }
   });
 }

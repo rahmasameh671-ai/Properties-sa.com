@@ -24,6 +24,10 @@ export const LeadForm = () => {
         body: JSON.stringify(data),
       });
 
+      if (typeof window !== "undefined" && typeof window.gtag_report_conversion === "function") {
+        window.gtag_report_conversion();
+      }
+
       setIsSuccess(true);
       e.target.reset();
     } catch (error) {
