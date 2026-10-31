@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Privacy Policy | properties-s.com</title>
+
+  <!-- Google tag (gtag.js) / Analytics placeholder -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/sodic-logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    :root {
+      --bg-alabaster: #F8F9FA;
+      --bg-pure-white: #FFFFFF;
+      --text-charcoal-primary: #1A202C;
+      --text-charcoal-secondary: #2D3748;
+      --text-muted: #64748B;
+      --border-cool: #E2E8F0;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+    body {
+      background-color: var(--bg-alabaster);
+      color: var(--text-charcoal-secondary);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 4rem 1.5rem 6rem;
+      text-align: center;
+    }
+    .legal-container {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-cool);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 3rem;
+      box-shadow: 0 16px 40px -10px rgba(26, 32, 44, 0.06);
+    }
+    .legal-brand-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 2rem;
+    }
+    .legal-brand-logo {
+      height: 40px;
+      width: auto;
+    }
+    .legal-brand-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-charcoal-primary);
+      background-color: var(--bg-alabaster);
+      border: 1px solid var(--border-cool);
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+    .back-btn {
+      display: inline-block;
+      color: var(--text-charcoal-primary);
+      text-decoration: none;
+      font-size: 0.825rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      border: 1px solid var(--border-cool);
+      background-color: var(--bg-pure-white);
+      padding: 0.65rem 1.6rem;
+      border-radius: 9999px;
+      margin-bottom: 2.5rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(26, 32, 44, 0.04);
+    }
+    .back-btn:hover {
+      background-color: var(--text-charcoal-primary);
+      color: #FFFFFF;
+      border-color: var(--text-charcoal-primary);
+      transform: translateY(-2px);
+    }
+    h1 {
+      font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+      color: var(--text-charcoal-primary);
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .last-updated {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    .legal-section {
+      margin-bottom: 2.5rem;
+      text-align: center;
+      border-bottom: 1px solid #F1F3F5;
+      padding-bottom: 2rem;
+    }
+    .legal-section:last-of-type {
+      border-bottom: none;
+    }
+    h2 {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-charcoal-primary);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+    p {
+      font-size: 0.95rem;
+      color: var(--text-charcoal-secondary);
+      line-height: 1.8;
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+    .bullet-list {
+      list-style: none;
+      margin: 0.5rem 0 1rem;
+      padding: 0;
+      text-align: center;
+    }
+    .bullet-list li {
+      font-size: 0.95rem;
+      color: var(--text-charcoal-secondary);
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .contact-box {
+      border-top: 1px solid var(--border-cool);
+      padding-top: 2.5rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .legal-footer-signature {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 2rem 1rem calc(4rem + env(safe-area-inset-bottom, 0px));
+      }
+      .legal-container {
+        padding: 2rem 1.25rem;
+      }
+      h1 {
+        font-size: 1.85rem;
+      }
+      .back-btn {
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="legal-container">
+    <div class="legal-brand-top">
+      <img src="/sodic-logo.png" alt="SODIC" class="legal-brand-logo" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/rahmasameh671-ai/sodic-new-3-10/main/public/sodic-logo.png';">
+      <span class="legal-brand-badge">By properties-s.com</span>
+    </div>
+
+    <a href="index.html" class="back-btn">&larr; Return to Website</a>
+
+    <h1>Privacy Policy</h1>
+    <div class="last-updated">Effective Date: January 1, 2026 | Last Updated: October 2026</div>
+
+    <div class="legal-section">
+      <h2>1. Introduction &amp; Authorized Independent Real Estate Consultancy Identity</h2>
+      <p>
+        Welcome to <strong>properties-s.com</strong>. We operate as an independent real estate consultancy and marketing platform based in Egypt, conducting digital marketing campaigns on behalf of leading property developers, including SODIC (Sixth of October Development &amp; Investment Company).
+      </p>
+      <p>
+        properties-s.com is committed to protecting the privacy and personal data of our website visitors and prospective clients. This Privacy Policy details how we collect, use, process, share, and safeguard your personal information when you browse our landing pages, submit inquiries, or interact with our real estate advisory services in compliance with international advertising standards, Google Ads policies, and applicable data privacy regulations.
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h2>2. Information We Collect</h2>
+      <p>
+        When you interact with our website or submit an interest form, we collect personal information that you voluntarily provide to us:
+      </p>
+      <ul class="bullet-list">
+        <li><strong>Contact Identification:</strong> Full Name, Primary Phone Number, Country Code, and WhatsApp contact details.</li>
+        <li><strong>Property Preferences:</strong> Project interests (e.g., The Lakes at SODIC East, Ogami Ras El Hekma, East Vale Mostakbal City), unit type preferences, and budget parameters.</li>
+        <li><strong>Inquiry Notes &amp; Communications:</strong> Records of communications, questions, or requests made via form submissions, phone conversations, or WhatsApp chats.</li>
+        <li><strong>Technical &amp; Analytical Data:</strong> IP address, device type, browser specifications, operating system, pages viewed, time spent on pages, referring URLs, and campaign identifiers captured automatically via cookies and web analytics tags.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>3. How We Use Your Information</h2>
+      <p>
+        We process your personal information strictly for legitimate commercial independent real estate consultancy and advisory operations:
+      </p>
+      <ul class="bullet-list">
+        <li>To contact you directly via phone, SMS, WhatsApp, or email to respond to your registered interest.</li>
+        <li>To furnish official developer brochures, master plans, pricing lists, payment schedules, and priority reservation guidance.</li>
+        <li>To facilitate private consultations, virtual meetings, or scheduled on-site visits with senior property advisors.</li>
+        <li>To verify lead authenticity and optimize the quality and relevance of our real estate advertising campaigns.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>4. Information Sharing &amp; Developer Partnership Disclosure</h2>
+      <p>
+        <strong>We respect your privacy: We do NOT sell, rent, lease, or trade your personal information to third-party data brokers or unaffiliated advertisers.</strong>
+      </p>
+      <p>
+        Your information is shared strictly with authorized real estate developer partners (specifically SODIC Developments) and licensed sales consultants exclusively to the extent necessary to verify pricing, unit availability, and complete sales advisory or contract booking processes requested by you.
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h2>5. Cookies, Google Ads &amp; Third-Party Tracking Technologies</h2>
+      <p>
+        Our website uses cookies, tracking pixels, and related technologies to ensure proper website functionality, evaluate marketing performance, and measure conversion effectiveness:
+      </p>
+      <ul class="bullet-list">
+        <li><strong>Google Ads &amp; Google Analytics:</strong> We utilize Google advertising tools, including conversion measurement and analytics tags. These tools place cookies on your device to analyze how users navigate our site, measure lead conversion actions, and deliver relevant advertisements based on past visits.</li>
+        <li><strong>Third-Party Vendors:</strong> Third-party vendors, including Google, use first-party and third-party cookies together to inform, optimize, and serve advertisements across the internet.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>6. Your Choices &amp; Opt-Out Instructions</h2>
+      <p>
+        You have complete control over how cookies and advertising tags track your online activity:
+      </p>
+      <ul class="bullet-list">
+        <li><strong>Google Ads Personalization:</strong> You can customize or opt out of Google's personalized advertising by visiting the <a href="https://adssettings.google.com/" target="_blank" rel="noopener" class="legal-link">Google Ads Settings</a> page.</li>
+        <li><strong>Industry Opt-Out:</strong> You may opt out of third-party behavioral advertising cookies through the <a href="http://optout.networkadvertising.org/" target="_blank" rel="noopener" class="legal-link">Network Advertising Initiative (NAI) Opt-Out Page</a> or the <a href="https://optout.aboutads.info/" target="_blank" rel="noopener" class="legal-link">Digital Advertising Alliance (DAA)</a>.</li>
+        <li><strong>Browser Controls:</strong> You can configure your browser settings (Chrome, Safari, Edge, Firefox) to block or delete cookies at any time.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>7. Data Security &amp; Retention</h2>
+      <p>
+        properties-s.com implements robust technical, physical, and administrative safeguards to prevent unauthorized access, disclosure, alteration, or destruction of your personal data. Personal data is retained only for as long as required to fulfill consultation, contractual, or statutory compliance purposes.
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h2>8. Your Legal Rights</h2>
+      <p>
+        In accordance with applicable privacy laws, you have the right to request access to your personal data, request correction of inaccurate details, request deletion of your information from our active databases, or withdraw consent to marketing communications at any time. To exercise any of these rights, please reach out to us using the contact details below.
+      </p>
+    </div>
+
+    <div class="contact-box">
+      <h2>Contact Us &amp; Corporate Verification</h2>
+      <p>For inquiries regarding this Privacy Policy or to exercise your data rights, please contact our Data Privacy Desk:</p>
+      <p><strong>Company:</strong> properties-s.com &mdash; Independent Real Estate Consultancy</p>
+      <p><strong>Physical Headquarters:</strong> New Cairo S5-3, Second District, Fifth Settlement, First Floor, Cairo, Egypt</p>
+      <p><strong>Direct Phone:</strong> <a href="tel:+201005080951" class="legal-link">+20 100 508 0951</a></p>
+      <p><strong>Official WhatsApp:</strong> <a href="https://wa.me/201277752731" target="_blank" rel="noopener" class="legal-link">+20 127 775 2731</a></p>
+      <p><strong>Official Email:</strong> <a href="mailto:info@properties-s.com" class="legal-link">info@properties-s.com</a></p>
+    </div>
+
+    <div class="legal-footer-signature">
+      &copy; 2026 properties-s.com &mdash; Independent Real Estate Consultancy Partner. All Rights Reserved.
+    </div>
+  </div>
+
+
+</body>
+</html>
