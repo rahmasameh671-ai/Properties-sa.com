@@ -1,0 +1,11 @@
+# Cloudflare Pages Redirects & SPA Rewrite Rules
+/lavista /Lavista 301
+/lavista/* /Lavista/:splat 301
+/Lavista.html /Lavista 301
+/lavista.html /Lavista 301
+/sodic.html /sodic 301
+/sodic /sodic/index.html 200
+/sodic/* /sodic/index.html 200
+/properties-s/sodic.html /properties-s/sodic 301
+/properties-s/sodic /properties-s/sodic/index.html 200
+/properties-s/sodic/* /properties-s/sodic/index.html 200

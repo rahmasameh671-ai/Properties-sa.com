@@ -1,0 +1,244 @@
+/**
+ * SODIC PREMIER DEVELOPMENTS — BY PROPERTIES-S.COM
+ * Main JavaScript Engine: Form Handling, Lead Routing, Analytics & UI Interactions
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileNavigation();
+  initLeadCaptureForm();
+  initSmoothScroll();
+  initAnalyticsTracking();
+});
+
+/**
+ * Mobile Navigation Menu
+ */
+function initMobileNavigation() {
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const navMenu = document.getElementById('navMenu');
+
+  if (!menuBtn || !navMenu) return;
+
+  menuBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+    const isOpen = navMenu.classList.contains('open');
+    menuBtn.setAttribute('aria-expanded', isOpen);
+    menuBtn.innerHTML = isOpen 
+      ? '<i class="fa-solid fa-xmark"></i>' 
+      : '<i class="fa-solid fa-bars"></i>';
+  });
+
+  navMenu.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+      navMenu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    }
+  });
+}
+
+/**
+ * Lead Capture Form Processing & Multi-Channel Routing
+ * Lead Routing:
+ * - Rahma@irtkaz.com
+ * - Mostafa.a.ashmawy@gmail.com
+ * - Mostafa.ashmawy@irtkaz.com
+ * Webhook: Zapier catch hook
+ * Local Storage persistence
+ * WhatsApp conversion fast-track (+201277752731)
+ */
+function initLeadCaptureForm() {
+  const leadForm = document.getElementById('heroLeadForm');
+  const successState = document.getElementById('leadSuccessState');
+  if (!leadForm) return;
+
+  leadForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const fullNameInput = document.getElementById('leadFullName');
+    const phoneInput = document.getElementById('leadPhone');
+    const countryCodeSelect = document.getElementById('countryCode');
+
+    if (!fullNameInput || !phoneInput) return;
+
+    const fullName = fullNameInput.value.trim();
+    const phoneRaw = phoneInput.value.trim().replace(/^0+/, '');
+    const countryCode = countryCodeSelect ? countryCodeSelect.value : '+20';
+    const fullPhone = `${countryCode} ${phoneRaw}`;
+    const defaultProject = 'The Lakes at SODIC East & Portfolio';
+
+    if (!fullName || !phoneRaw) {
+      alert('Please enter your full name and phone number.');
+      return;
+    }
+
+    const submitBtn = leadForm.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Submitting...';
+    submitBtn.disabled = true;
+
+    const formData = new FormData(e.target);
+
+    // Grabbing form data PLUS background data
+    const data = {
+      fullName: formData.get("fullName") || fullName,
+      phoneNumber: fullPhone,
+      landingPageUrl: window.location.href,       // Captures the full page URL
+      submissionDate: new Date().toISOString(),   // Captures the exact date and time
+      countryCode: countryCode,
+      rawPhone: phoneRaw,
+      projectFocus: defaultProject,
+      source: 'SODIC Landing Page - The Lakes Launch - properties-s.com',
+      routedEmails: [
+        'Rahma@irtkaz.com',
+        'Mostafa.a.ashmawy@gmail.com',
+        'Mostafa.ashmawy@irtkaz.com'
+      ]
+    };
+
+    try {
+      await fetch("https://hooks.zapier.com/hooks/catch/25429357/uclzmpn/", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      // Google Ads Conversion Tracking (properties-s conv)
+      if (typeof gtag_report_conversion === 'function') {
+        gtag_report_conversion();
+      } else if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-10964877445/novGCO2LpqIdEIWBu-wo',
+          'value': 1.0,
+          'currency': 'EGP'
+        });
+      }
+
+      // Show Thank You success state matching requested design
+      if (successState) {
+        successState.style.display = 'block';
+        leadForm.style.display = 'none';
+        const cardHeader = document.querySelector('.lead-card-header');
+        if (cardHeader) cardHeader.style.display = 'none';
+      }
+
+      showToast(
+        'Thank You!',
+        'Your details have been received. We will be in touch shortly.'
+      );
+
+      e.target.reset();
+
+      // Local Storage backup persistence
+      try {
+        const storedLeads = JSON.parse(localStorage.getItem('properties_s_sodic_leads') || '[]');
+        storedLeads.push(data);
+        localStorage.setItem('properties_s_sodic_leads', JSON.stringify(storedLeads));
+      } catch (storageErr) {
+        console.warn("Local storage write notice:", storageErr);
+      }
+
+      // Lead conversion event (fires if gtag or gtag_report_conversion is configured)
+      if (typeof gtag_report_conversion === 'function') {
+        gtag_report_conversion();
+      } else if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          event_category: 'Lead Capture',
+          event_label: defaultProject
+        });
+      }
+
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      submitBtn.innerHTML = originalBtnText;
+      submitBtn.disabled = false;
+    }
+  });
+
+  const resetBtn = document.getElementById('resetLeadFormBtn');
+  if (resetBtn && successState && leadForm) {
+    resetBtn.addEventListener('click', () => {
+      successState.style.display = 'none';
+      leadForm.style.display = '';
+      const cardHeader = document.querySelector('.lead-card-header');
+      if (cardHeader) cardHeader.style.display = '';
+    });
+  }
+}
+
+/**
+ * Toast Notification Helper
+ */
+function showToast(title, message) {
+  const toast = document.getElementById('leadToast');
+  if (!toast) return;
+
+  const titleEl = toast.querySelector('h4');
+  const msgEl = toast.querySelector('p');
+
+  if (titleEl) titleEl.textContent = title;
+  if (msgEl) msgEl.textContent = message;
+
+  toast.classList.add('show');
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 5500);
+}
+
+/**
+ * Smooth scrolling with dynamic header offset
+ */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#' || targetId === '') return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        const headerOffset = 0;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+/**
+ * WhatsApp & CTA Analytics Tracking
+ */
+function initAnalyticsTracking() {
+  document.querySelectorAll('a[href*="wa.me"], .btn-whatsapp, .floating-whatsapp-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'contact', {
+          event_category: 'Engagement',
+          method: 'WhatsApp',
+          event_label: this.getAttribute('href') || 'Direct WhatsApp Chat'
+        });
+      }
+
+      if (typeof gtag_report_conversion === 'function') {
+        gtag_report_conversion(this.getAttribute('href'));
+      }
+    });
+  });
+}
+
